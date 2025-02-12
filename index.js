@@ -1,8 +1,7 @@
 import express from 'express';
 
 // import route functions
-import { getCars } from "./src/cars.js"
-import { addCar } from "./src/cars.js"
+import { getCars, addCar, run } from "./src/cars.js"
 
 // create a new server instance
 const app = express();
@@ -19,6 +18,7 @@ app.use(express.json());
  app.post('/cars', addCar);
 
 // listen to the server on the specified port
+run().catch(console.dir);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

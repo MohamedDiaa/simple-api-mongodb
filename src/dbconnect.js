@@ -4,8 +4,11 @@ import { MongoClient ,ServerApiVersion } from "mongodb";
 // import secret uri
 import { uri } from "../secret.js";
 
-
 export const client = new MongoClient(uri, {
-    serverApi: ServerApiVersion.v1
-})
-
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
+  
