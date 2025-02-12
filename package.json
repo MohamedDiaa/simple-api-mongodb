@@ -1,0 +1,12 @@
+{
+  "name": "api-mongodb",
+  "version": "1.0.0",
+  "description": "[Let’s build a simple API with Express and MongoDB.](https://medium.com/@ralphplacide/lets-build-a-simple-api-with-express-and-mongodb-5e9aae53add0)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
