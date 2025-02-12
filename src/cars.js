@@ -3,27 +3,32 @@ import { client } from "./dbconnect.js";
 export async function getCars(req, res) {
   try {
     await client.connect();
-    const collection = await client.db("test").collection("cars");
 
-    collection.find().toArray((err, result) => {
-      if (err) res.status(500).send(err);
-      if (result) res.json(result);
-    });
-    
+    await client
+      .db("test")
+      .collection("cars")
+      .find()
+      .toArray((err, result) => {
+        if (err) res.status(500).send(err);
+        if (result) res.json(result);
+      });
   } finally {
-     await client.close();
+    await client.close();
   }
 }
 
 export async function addCar(req, res) {
   try {
-    await client.connect();
-    const collection = await client.db("test").collection("cars");
     const car = req.body;
-    collection.insertOne(car, (err, result) => {
-      if (err) res.status(500).send(err);
-      if (result) res.json(result);
-    });
+
+    await client.connect();
+    await client
+      .db("test")
+      .collection("cars")
+      .insertOne(car, (err, result) => {
+        if (err) res.status(500).send(err);
+        if (result) res.json(result);
+      });
   } finally {
     await client.close();
   }
